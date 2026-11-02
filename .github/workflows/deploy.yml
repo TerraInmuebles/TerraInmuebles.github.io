@@ -1,4 +1,4 @@
-name: Deploy TERRAEDIFICA to GitHub Pages
+name: Deploy Terra Inmuebles to GitHub Pages
 
 on:
   push:

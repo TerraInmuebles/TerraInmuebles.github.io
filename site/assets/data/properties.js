@@ -1,7 +1,7 @@
-window.TERRAEDIFICA_PROPERTIES = [
+window.TERRA_INMUEBLES_PROPERTIES = [
 	{
 		id: 'demo-casa-andina',
-		title: 'Casa contemporánea andina · Demo',
+		title: 'Casa contemporánea · Ejemplo',
 		type: 'casa',
 		status: 'demo',
 		isDemo: true,
@@ -26,7 +26,7 @@ window.TERRAEDIFICA_PROPERTIES = [
 	},
 	{
 		id: 'demo-departamento-andahuaylas',
-		title: 'Departamento Vista Panorámica · Demo',
+		title: 'Departamento Vista Panorámica · Ejemplo',
 		type: 'departamento',
 		status: 'demo',
 		isDemo: true,
@@ -46,24 +46,20 @@ window.TERRAEDIFICA_PROPERTIES = [
 		gallery: ['./assets/images/multifamily_andahuaylas_project_1793378651853.jpg']
 	},
 	{
-		id: 'demo-casa-en-construccion',
-		title: 'Casa en construcción · Demo',
-		type: 'construccion',
+		id: 'demo-terreno-andahuaylas',
+		title: 'Terreno con vista al valle · Ejemplo',
+		type: 'terreno',
 		status: 'demo',
 		isDemo: true,
 		location: 'Zona de ejemplo · Apurímac',
 		priceSoles: 485000,
 		image: './assets/images/house_chumbao_andahuaylas_1793378652749.jpg',
-		imageAlt: 'Imagen conceptual de vivienda contemporánea en la sierra',
+		imageAlt: 'Imagen referencial de una propiedad en el entorno andino',
 		publishedAt: '2026-10-28',
-		description: 'Ficha de muestra. La propiedad, el precio, la ubicación y las características no son reales ni constituyen una oferta inmobiliaria.',
-		areaBuilt: '215 m² · ejemplo',
-		bedrooms: 4,
-		bathrooms: 3,
-		floors: 2,
-		garage: 'Sí · ejemplo',
+		description: 'Ficha de muestra. El terreno, el precio, la ubicación y las características no son reales ni constituyen una oferta inmobiliaria.',
+		areaLand: '300 m² · ejemplo',
 		reference: 'Ubicación ilustrativa; no corresponde a una dirección real.',
-		features: ['Avance y acabados no especificados; ficha demostrativa.'],
+		features: ['Área y ubicación referenciales; ficha demostrativa.'],
 		gallery: ['./assets/images/house_chumbao_andahuaylas_1793378652749.jpg']
 	}
 ];
