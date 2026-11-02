@@ -4,12 +4,10 @@ Web estática para GitHub Pages. No necesita Node.js, npm, React, Google AI Stud
 
 ## Publicación
 
-1. En GitHub, renombra el repositorio actual a `TerraInmuebles.github.io` desde **Settings → General → Repository name**.
-2. Usa el remoto `https://github.com/terraedifica/TerraInmuebles.github.io.git` y publica la rama `main`.
-3. En **Settings → Pages**, selecciona **GitHub Actions** como fuente.
+1. Renombra el repositorio a `terrainmuebles` desde **Settings → General → Repository name**.
+2. En **Settings → Pages**, selecciona **GitHub Actions** y configura `terrainmuebles.github.io`.
+3. Después del cambio de nombre, actualiza el remoto local si es necesario y publica la rama `main`.
 4. Cada cambio publicado en `main` volverá a desplegar el sitio.
-
-Como el repositorio pertenece a la cuenta `terraedifica`, su dirección de GitHub Pages será `https://terraedifica.github.io/TerraInmuebles.github.io/`. El nombre del repositorio por sí solo no cambia el nombre de la cuenta ni crea el dominio principal `terraInmuebles.github.io`; para eso, el repositorio tendría que pertenecer a una cuenta u organización llamada `terraInmuebles`.
 
 El workflow publica `site/` directamente. La web presenta inmuebles en venta en Andahuaylas y Apurímac. Las tres fichas actuales contienen datos ficticios de muestra y no representan ofertas reales; reemplázalas por información verificada antes de anunciar propiedades. El formulario prepara una consulta y la persona la envía desde WhatsApp.
 
