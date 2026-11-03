@@ -261,16 +261,6 @@
     .contact-form .filter-option{min-height:46px;padding:11px 13px;border-radius:12px;font-size:.83rem}
     .contact-form .field-error{display:block;margin:7px 2px 0;color:#ffe0c9;font-size:.73rem;font-weight:750}
     .contact-form .field-error[hidden]{display:none}
-    .advisor-choice{margin:16px 0 14px;padding:12px 14px 14px;border:1px solid #ffffff45;border-radius:16px;background:#ffffff0d}
-    .advisor-choice legend{padding:0 5px;color:#f2f5e9;font-size:.78rem;font-weight:850}
-    .advisor-choice>p{margin:0 0 10px;color:#d9e5d9;font-size:.7rem;line-height:1.5}
-    .advisor-choice-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-    .advisor-choice-option{display:flex;align-items:center;gap:9px;min-width:0;padding:11px 12px;border:1px solid #ffffff45;border-radius:13px;background:#ffffff10;color:#fff;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
-    .advisor-choice-option:hover,.advisor-choice-option.selected{transform:translateY(-1px);border-color:#c3d89f;background:#ffffff20}
-    .advisor-choice-option input{width:17px;height:17px;flex:none;margin:0;accent-color:#a7c875}
-    .advisor-choice-option span{min-width:0}
-    .advisor-choice-option b{display:block;color:#fff;font-size:.72rem}
-    .advisor-choice-option small{display:block;margin-top:3px;color:#d9e5d9;font-size:.66rem}
     .contact-link{border-color:#e0d5c2;border-radius:17px;background:#faf5ea}
     .contact-link:hover{border-color:#aab98d;background:#fffaf0}
     .contact-link{width:100%;text-align:left;color:inherit;cursor:pointer}
@@ -354,7 +344,7 @@
           <span class="kicker">Casas, terrenos y departamentos · Andahuaylas</span>
           <h1>Encuentra el inmueble que <span>estás buscando.</span></h1>
           <p class="hero-copy">Explora casas, terrenos, departamentos y locales en Andahuaylas y Apurímac. Filtra el catálogo y consulta con nuestro equipo sobre disponibilidad, precio y ubicación.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#propiedades">Ver inmuebles <span aria-hidden="true">→</span></a><a class="btn btn-light" href="#contacto">Cuéntanos qué necesitas</a></div>
+          <div class="hero-actions"><a class="btn btn-primary" href="#propiedades">Ver inmuebles <span aria-hidden="true">→</span></a><button class="btn btn-light" id="hero-contact-cta" type="button">Cuéntanos qué necesitas</button></div>
           <div class="hero-proof"><span><i class="proof-dot" aria-hidden="true"></i> Venta de inmuebles</span><span><i class="proof-dot" aria-hidden="true"></i> Consultas por WhatsApp</span></div>
         </div>
         <div class="hero-showcase"><img src="./assets/images/terra-inmuebles-logo.png" alt="Logo de Terra Inmuebles"></div>
@@ -415,7 +405,7 @@
           <div class="form-row"><div class="field"><label for="contact-name">Nombre</label><input id="contact-name" name="name" autocomplete="name" required placeholder="Tu nombre y apellido"></div><div class="field"><label for="contact-phone">Celular de contacto</label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" required placeholder="Tu número de celular"></div></div>
           <div class="field"><label for="contact-interest">Tipo de inmueble</label><select id="contact-interest" name="interest" aria-label="Tipo de inmueble" required><option value="" disabled selected>Elige el tipo de inmueble</option><option value="Casa">Casa</option><option value="Terreno">Terreno</option><option value="Departamento">Departamento</option><option value="Local u otro inmueble">Local u otro inmueble</option><option value="Quiero consultar todas las opciones">Quiero consultar todas las opciones</option></select><span class="field-error" id="contact-interest-error" role="alert" hidden>Selecciona el tipo de inmueble para continuar.</span></div>
           <button class="not-found-toggle" id="not-found-cta" type="button" aria-controls="contact-not-found-details" aria-expanded="false">¿No encontraste lo que buscas? <span>Cuéntanos qué necesitas +</span></button><textarea class="not-found-details" id="contact-not-found-details" name="not-found-details" placeholder="Describe el inmueble, la zona o las características que buscas." aria-label="Describe qué inmueble estás buscando" hidden></textarea>
-          <fieldset class="advisor-choice"><legend>Elige a quién enviar tu consulta</legend><p>Solo necesitas seleccionar un asesor una vez.</p><div class="advisor-choice-options"><label class="advisor-choice-option"><input type="radio" name="advisor" value="51922836427" required><span><b>Asesor inmobiliario</b><small>+51 922 836 427</small></span></label><label class="advisor-choice-option"><input type="radio" name="advisor" value="51941201577" required><span><b>Asesor inmobiliario</b><small>+51 941 201 577</small></span></label></div></fieldset>
+          <div class="field"><label for="contact-advisor">Enviar consulta a</label><select id="contact-advisor" name="advisor" required><option value="" disabled selected>Elige un número de WhatsApp</option><option value="51922836427">+51 922 836 427</option><option value="51941201577">+51 941 201 577</option></select></div>
           <button class="btn btn-primary" type="submit">Enviar consulta por WhatsApp <span aria-hidden="true">↗</span></button><small class="fine">Este sitio no almacena tus datos.</small>
         </form>
       </div>
@@ -665,6 +655,10 @@
         advisorDialog.showModal();
       }
 
+      document.getElementById('hero-contact-cta').addEventListener('click', () => {
+        chooseAdvisor('Hola Terra Inmuebles, quisiera contarles qué inmueble necesito.');
+      });
+
       function getFilteredProperties() {
         const query = normalizeText(searchInput.value.trim());
         const type = typeFilter.value;
@@ -913,13 +907,6 @@
       contactInterest.addEventListener('change', () => {
         contactInterestError.hidden = true;
         contactInterestDropdown.querySelector('.filter-select-trigger').setAttribute('aria-invalid', 'false');
-      });
-      document.querySelectorAll('input[name="advisor"]').forEach(input => {
-        input.addEventListener('change', () => {
-          document.querySelectorAll('.advisor-choice-option').forEach(option => {
-            option.classList.toggle('selected', option.contains(input) && input.checked);
-          });
-        });
       });
       notFoundButton.addEventListener('click', () => {
         const isExpanded = notFoundButton.getAttribute('aria-expanded') === 'true';
